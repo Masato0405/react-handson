@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React Samples</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!--React:ビューを構築するライブラリ
+        DOM要素がどのようになるかを指示するReact要素を作成する
+    -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <!--ReactDOM:Reactで構築されたビューを描画するライブラリ
+        React要素をDOM要素に変換する
+    -->
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <script>
+        const items = [
+            "2 lb salmon",
+            "5 sprigs fresh rosemary",
+            "2 tablepons olive oil",
+            "2 small lemons",
+            "1 teaspoon kosher salt",
+            "4 cloves of chopped garlic"
+        ];
+
+        // React要素の生成
+        const recipe = React.createElement(
+            "ul",
+            { className: "ingredients" },
+            // ulの子要素をmapで作成する, それぞれの子要素をkeyで管理するためkeyを付与する
+            items.map((ingredient, i) => React.createElement("li", {key: i}, ingredient))
+        );
+
+        // React要素をDOMに変換する, 配列で複数のReact要素を渡せる
+        ReactDOM.render(recipe, document.getElementById("root"));
+    </script>
+</body>
+</html>
+
