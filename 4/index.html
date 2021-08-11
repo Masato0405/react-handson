@@ -26,16 +26,29 @@
             "4 cloves of chopped garlic"
         ];
 
-        // React要素の生成
-        const recipe = React.createElement(
-            "ul",
-            { className: "ingredients" },
-            // ulの子要素をmapで作成する, それぞれの子要素をkeyで管理するためkeyを付与する
-            items.map((ingredient, i) => React.createElement("li", {key: i}, ingredient))
-        );
+        // // React要素の生成
+        // const recipe = React.createElement(
+        //     "ul",
+        //     { className: "ingredients" },
+        //     // ulの子要素をmapで作成する, それぞれの子要素をkeyで管理するためkeyを付与する
+        //     items.map((ingredient, i) => React.createElement("li", {key: i}, ingredient))
+        // );
 
-        // React要素をDOMに変換する, 配列で複数のReact要素を渡せる
-        ReactDOM.render(recipe, document.getElementById("root"));
+        // // React要素をDOMに変換する, 配列で複数のReact要素を渡せる
+        // ReactDOM.render(recipe, document.getElementById("root"));
+
+        // 関数コンポーネント
+        function IngredientsList() {
+            return React.createElement(
+                "ul",
+                { className: "ingredients"},
+                items.map((ingredient, i) => React.createElement("li", { key:i }, ingredient))
+            );
+        }
+        ReactDOM.render(
+            React.createElement(IngredientsList, { items }, null ),
+            document.getElementById("root")
+        );
     </script>
 </body>
 </html>
